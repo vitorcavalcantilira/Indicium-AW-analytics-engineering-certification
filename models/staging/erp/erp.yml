@@ -14,7 +14,7 @@ sources:
               - not_null
               - relationships:
                   field: salesorderid
-                  to: ref('salesorderheader')
+                  to: ref('salesorderheader')                  
           - name: salesorderdetailid
             tests:
               - not_null
@@ -41,12 +41,21 @@ sources:
             tests:
                - not_null
                - unique
+          - name: orderdate
+            tests:
+              - not_null                  
+          - name: status
+            tests:
+              - not_null        
           - name: customerid
             tests:
               - not_null
               - relationships:
                   field: customerid
                   to: ref('customer')
+          - name: salespersonid
+            tests:
+              - not_null
           - name: territoryid
             tests:
               - not_null
@@ -84,6 +93,9 @@ sources:
           - name: name
             tests:
               - not_null
+          - name: reasontype
+            tests:
+              - not_null    
 
       - name: salesorderheadersalesreason
         columns:
@@ -116,6 +128,9 @@ sources:
               - relationships:
                   field: countryregioncode
                   to: ref('countryregion') 
+          - name: group
+            tests:
+              - not_null
      
       - name: customer
         columns:
@@ -126,9 +141,26 @@ sources:
           - name: personid
             tests:
               - unique
+          - name: territoryid
+            tests:
+              - not_null
+              - unique
               - relationships:
-                  field: businessentityid
-                  to: ref('person')                 
+                  field: territoryid
+                  to: ref('salesterritory')                    
+
+      - name: person
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
+          - name: firstname
+            tests:
+              - not_null
+          - name: lastname
+            tests:
+            - not_null   
       
       - name: address
         columns:
@@ -144,20 +176,7 @@ sources:
               - not_null
               - relationships:
                   field: stateprovinceid
-                  to: ref('stateprovince')    
-    
-      - name: person
-        columns:
-          - name: businessentityid
-            tests:
-              - not_null
-              - unique
-          - name: firstname
-            tests:
-              - not_null
-          - name: lastname
-            tests:
-            - not_null     
+                  to: ref('stateprovince')      
 
       - name: stateprovince
         columns:
@@ -165,6 +184,9 @@ sources:
             tests:
               - not_null
               - unique
+          - name: stateprovincecode
+            tests:
+               - not_null                                   
           - name: territoryid
             tests:
               - not_null
@@ -177,9 +199,10 @@ sources:
               - relationships:
                   field: countryregioncode
                   to: ref('countryregion')
-          - name: group
+          - name: name
             tests:
               - not_null
+
                   
       - name: countryregion
         columns:
