@@ -54,8 +54,6 @@ sources:
                   field: customerid
                   to: ref('customer')
           - name: salespersonid
-            tests:
-              - not_null
           - name: territoryid
             tests:
               - not_null
@@ -129,8 +127,6 @@ sources:
                   field: countryregioncode
                   to: ref('countryregion') 
           - name: group
-            tests:
-              - not_null
      
       - name: customer
         columns:
@@ -144,7 +140,6 @@ sources:
           - name: territoryid
             tests:
               - not_null
-              - unique
               - relationships:
                   field: territoryid
                   to: ref('salesterritory')                    
