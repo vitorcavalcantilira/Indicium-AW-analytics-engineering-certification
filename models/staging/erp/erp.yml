@@ -1,0 +1,204 @@
+version: 2
+
+sources:
+  - name: raw_adventure_works
+    description: Sistema de dados da Adventure Works.
+    database: FEA24_9
+    schema: raw_adventure_works
+    tables:
+
+      - name: salesorderdetail
+        columns:
+          - name: salesorderid
+            tests:
+              - not_null
+              - relationships:
+                  field: salesorderid
+                  to: ref('salesorderheader')
+          - name: salesorderdetailid
+            tests:
+              - not_null
+              - unique
+          - name: orderqty
+            tests:
+              - not_null
+          - name: productid
+            tests:
+              - not_null
+              - relationships:
+                  field: productid
+                  to: ref('product')
+          - name: unitprice
+            tests:
+              - not_null
+          - name: unitpricediscount
+            tests:
+              - not_null
+      
+      - name: salesorderheader
+        columns:
+          - name: salesorderid
+            tests:
+               - not_null
+               - unique
+          - name: customerid
+            tests:
+              - not_null
+              - relationships:
+                  field: customerid
+                  to: ref('customer')
+          - name: territoryid
+            tests:
+              - not_null
+              - relationships:
+                  field: territoryid
+                  to: ref('salesterritory')              
+          - name: shiptoaddressid
+            tests:
+            - not_null
+            - relationships:
+                field: addressid
+                to: ref('address')
+          - name: creditcardid
+            tests:
+              - relationships:
+                  field: creditcardid
+                  to: ref('creditcard')        
+
+      - name: creditcard
+        columns:
+          - name: creditcardid
+            tests:
+              - not_null
+              - unique
+          - name: cardtype
+            tests:
+              - not_null                         
+
+      - name: salesreason
+        columns:
+          - name: salesreasonid
+            tests:
+              - not_null
+              - unique
+          - name: name
+            tests:
+              - not_null
+
+      - name: salesorderheadersalesreason
+        columns:
+          - name: salesorderid
+            tests:
+              - not_null
+              - relationships:
+                  field: salesorderid
+                  to: ref('salesorderheader')
+          - name: salesreasonid
+            tests:
+              - not_null
+              - relationships:
+                  field: salesreasonid
+                  to: ref('salesreason')
+
+
+      - name: salesterritory
+        columns:
+          - name: territoryid
+            tests:
+              - not_null
+              - unique
+          - name: name
+            tests:
+              - not_null
+          - name: countryregioncode
+            tests:
+              - not_null
+              - relationships:
+                  field: countryregioncode
+                  to: ref('countryregion') 
+     
+      - name: customer
+        columns:
+          - name: customerid
+            tests:
+              - not_null
+              - unique
+          - name: personid
+            tests:
+              - unique
+              - relationships:
+                  field: businessentityid
+                  to: ref('person')                 
+      
+      - name: address
+        columns:
+          - name: addressid
+            tests: 
+              - not_null
+              - unique
+          - name: city
+            tests:
+              - not_null
+          - name: stateprovinceid
+            tests:
+              - not_null
+              - relationships:
+                  field: stateprovinceid
+                  to: ref('stateprovince')    
+    
+      - name: person
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
+          - name: firstname
+            tests:
+              - not_null
+          - name: lastname
+            tests:
+            - not_null     
+
+      - name: stateprovince
+        columns:
+          - name: stateprovinceid
+            tests:
+              - not_null
+              - unique
+          - name: territoryid
+            tests:
+              - not_null
+              - relationships:
+                  field: territoryid
+                  to: ref('salesterritory')
+          - name: countryregioncode
+            tests:
+              - not_null
+              - relationships:
+                  field: countryregioncode
+                  to: ref('countryregion')
+          - name: group
+            tests:
+              - not_null
+                  
+      - name: countryregion
+        columns:
+          - name: countryregioncode
+            tests:
+              - not_null
+              - unique
+          - name: name
+            tests:
+              - not_null
+              - unique                  
+
+      - name: product
+        columns:
+          - name: productid
+            tests:
+              - not_null
+              - unique
+          - name: name
+            tests:
+              - not_null
+              - unique
