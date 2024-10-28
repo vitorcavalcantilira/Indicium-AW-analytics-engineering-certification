@@ -3,7 +3,6 @@ with
         select 
             cast(countryregioncode as string) as sigla_pais
             , cast(name as string) as nome_pais   
-
                        
         from {{ source('raw_adventure_works', 'countryregion') }}
     )
