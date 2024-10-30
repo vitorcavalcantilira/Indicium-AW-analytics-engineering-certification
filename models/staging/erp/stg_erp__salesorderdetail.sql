@@ -13,6 +13,5 @@ with
 select *
 from fonte_pedido_itens
 
-
           
  

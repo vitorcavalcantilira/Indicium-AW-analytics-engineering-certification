@@ -10,6 +10,5 @@ with
 select *
 from fonte_pedido_motivo_venda
 
-
           
  

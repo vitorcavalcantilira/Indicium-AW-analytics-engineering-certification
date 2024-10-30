@@ -30,7 +30,7 @@ with
             , cast(territoryid as int) as pk_territorio
             , cast(shiptoaddressid as int) as fk_endereco
             , case when status = 5 then 'Shipped' end as status                   
-            , cast(creditcardid as numeric(18,2)) as preco_da_unidade
+            , cast(creditcardid as int) as pk_cartao_credito
             , cast(subtotal as numeric(18,2)) as sub_total
             , cast(taxamt as numeric(18,2)) as valor_taxas
             , cast(freight as numeric(18,2)) as valor_frete
@@ -42,7 +42,4 @@ with
 
 select *
 from fonte_pedido_header
-
-
-          
  
