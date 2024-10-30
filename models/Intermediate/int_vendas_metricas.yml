@@ -33,7 +33,7 @@ models:
         tests:
           - not_null
 
-      - name: order_date
+      - name: full_date
         description: Data do pedido em formato abreviado.
         tests:
           - not_null

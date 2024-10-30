@@ -7,7 +7,7 @@ models:
       Tabela que consolida informações de clientes ao enriquecer dados pessoais com informações do cadastro de clientes do sistema ERP.
 
     columns:
-      - name: pk_entity
+      - name: pk_cliente
         description: Identificador único da entidade/pessoa.
         tests:
           - not_null

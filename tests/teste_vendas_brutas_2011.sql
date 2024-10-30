@@ -10,7 +10,7 @@ with
             --, round(sum(valor_bruto_ordenado),2) as total_bruto_ordenado --valor arredondado com 2 casas decimais          
         
         from {{ ref('int_vendas_metricas') }}
-        where order_date between '2011-01-01' and '2011-12-31'
+        where full_date between '2011-01-01' and '2011-12-31'
 
     )
 
