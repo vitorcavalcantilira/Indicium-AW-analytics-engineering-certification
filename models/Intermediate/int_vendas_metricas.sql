@@ -49,7 +49,7 @@ with
 
             , IFNULL(salesorderheader.status, 'Nao registrado') as status
 
-            , salesorderheader.order_date
+            , salesorderheader.full_date
             , salesorderheader.order_year
             , salesorderheader.order_month
             , salesorderheader.order_day 
@@ -76,5 +76,5 @@ with
         sum(sub_total)
         , sum(valor_bruto_ordenado)
     from final_select
-    where order_date between '2011-01-01' and '2011-12-31'*/
+    where full_date between '2011-01-01' and '2011-12-31'*/
     -- Teste para valor vendas em 2011

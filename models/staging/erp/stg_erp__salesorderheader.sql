@@ -8,7 +8,7 @@ with
     
     ,extracao_data as (
         select*
-            , orderdate_timestamp::date as order_date
+            , orderdate_timestamp::date as full_date
             , extract(year from orderdate_timestamp) as order_year
             , extract(month from orderdate_timestamp) as order_month
             , extract(day from orderdate_timestamp) as order_day
@@ -21,7 +21,7 @@ with
         select 
             cast(salesorderid as int) as fk_pedido
             --, (order_day || '-' || order_month || '-'|| order_year) as data_abreviada
-            , order_date
+            , full_date
             , order_year
             , order_month
             , order_day               
@@ -46,6 +46,6 @@ from fonte_pedido_header
 /*select
     sum(sub_total) as sub_total
 from fonte_pedido_header
-where order_date between '2011-01-01' and '2011-12-31'
+where full_date between '2011-01-01' and '2011-12-31'
 --where order_year = 2011*/
 

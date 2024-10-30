@@ -9,7 +9,7 @@ models:
       múltiplas fontes do ERP.
 
     columns:
-      - name: pk_entity
+      - name: pk_cliente
         description: Identificador único para cada cliente.
         tests:
           - not_null
