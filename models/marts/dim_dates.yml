@@ -1,0 +1,41 @@
+version: 2
+
+models:
+
+  - name: dim_dates
+    description: >
+      Tabela dimensional de calendário contendo uma faixa contínua de datas entre 01/01/1970 e 31/12/2014. 
+      Inclui informações detalhadas como ano, mês, dia, nome do mês e a concatenação de mês e ano, facilitando 
+      análises temporais em diferentes granularidades.
+
+    columns:
+      - name: full_date
+        description: Data completa (yyyy-mm-dd) que serve como chave primária da dimensão.
+        tests:
+          - not_null
+          - unique
+
+      - name: year
+        description: Ano correspondente à data.
+        tests:
+          - not_null
+
+      - name: month
+        description: Mês (numérico) correspondente à data.
+        tests:
+          - not_null
+
+      - name: day
+        description: Dia do mês correspondente à data.
+        tests:
+          - not_null
+
+      - name: month_name
+        description: Nome do mês correspondente à data (por exemplo, Janeiro, Fevereiro).
+        tests:
+          - not_null
+
+      - name: month_and_year
+        description: Concatenação do nome do mês e ano (por exemplo, Janeiro/1970).
+        tests:
+          - not_null

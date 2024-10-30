@@ -1,0 +1,30 @@
+version: 2
+
+models:
+
+  - name: dim_sales_reason
+    description: >
+      Tabela de fatos que enriquece as informações sobre motivos de vendas associados a pedidos.
+      Inclui detalhes como nome e tipo de motivo para análise de razões comerciais que influenciaram 
+      os pedidos.
+
+    columns:
+      - name: fk_pedido
+        description: Identificador do pedido associado ao motivo de venda.
+        tests:
+          - not_null
+
+      - name: pk_motivo_venda
+        description: Identificador único para cada motivo de venda.
+        tests:
+          - not_null
+
+      - name: nome_motivo
+        description: Nome do motivo da venda. Caso não esteja disponível, é exibido 'Nao registrado'.
+        tests:
+          - not_null
+
+      - name: tipo_motivo
+        description: Tipo de motivo da venda (por exemplo, 'Promotion', 'other'). Caso não disponível, é exibido 'Nao registrado'.
+        tests:
+          - not_null

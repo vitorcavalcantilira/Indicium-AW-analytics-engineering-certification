@@ -1,0 +1,89 @@
+version: 2
+
+models:
+
+  - name: int_vendas_metricas
+    description: >
+      Modelo que compila informações sobre pedidos, incluindo detalhes do endereço, do cliente e da forma de pagamento. O resultado fornece uma visão abrangente das vendas, métricas e status dos pedidos.
+    
+    columns:
+      - name: fk_pedido
+        description: Identificador do pedido.
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_endereco
+        description: Identificador do endereço associado ao pedido.
+        tests:
+          - not_null
+
+      - name: pk_cliente
+        description: Identificador único do cliente associado ao pedido.
+        tests:
+          - not_null
+
+      - name: tipo_cartao
+        description: Tipo do cartão de crédito utilizado para o pagamento. Se não registrado, retorna 'Nao registrado'.
+        tests:
+          - not_null
+
+      - name: status
+        description: Status do pedido. Se não registrado, retorna 'Nao registrado'.
+        tests:
+          - not_null
+
+      - name: order_date
+        description: Data do pedido em formato abreviado.
+        tests:
+          - not_null
+
+      - name: order_year
+        description: Ano do pedido.
+        tests:
+          - not_null
+
+      - name: order_month
+        description: Mês do pedido.
+        tests:
+          - not_null
+
+      - name: order_day
+        description: Dia do pedido.
+        tests:
+          - not_null
+
+      - name: sub_total
+        description: Valor total dos produtos antes de taxas e frete.
+        tests:
+          - not_null
+
+      - name: valor_taxas
+        description: Valor das taxas aplicadas ao pedido.
+        tests:
+          - not_null
+
+      - name: valor_frete
+        description: Valor do frete para entrega do pedido.
+        tests:
+          - not_null
+
+      - name: total_devido
+        description: Valor total a ser pago pelo cliente, incluindo produtos, taxas e frete.
+        tests:
+          - not_null
+
+      - name: qtd_produtos
+        description: Quantidade total de produtos no pedido.
+        tests:
+          - not_null
+
+      - name: qtd_pedidos_total
+        description: Total de pedidos associados ao mesmo identificador.
+        tests:
+          - not_null
+
+      - name: valor_bruto_ordenado
+        description: Valor bruto total dos produtos encomendados.
+        tests:
+          - not_null

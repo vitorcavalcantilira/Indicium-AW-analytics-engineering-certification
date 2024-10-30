@@ -20,7 +20,7 @@ with
 
             , row_number () over (partition by salesorderheader.fk_pedido order by salesorderdetail.fk_pedido) as row_sales_orderdetails
             
-            , cast(salesorderdetail.preco_da_unidade*salesorderdetail.qtd_pedido as numeric(18,2)) as valor_bruto
+            , salesorderdetail.preco_da_unidade*salesorderdetail.qtd_pedido as valor_bruto
             , salesorderdetail.qtd_pedido
 
         from salesorderheader
@@ -49,7 +49,7 @@ with
 
             , IFNULL(salesorderheader.status, 'Nao registrado') as status
 
-            , salesorderheader.data_abreviada
+            , salesorderheader.order_date
             , salesorderheader.order_year
             , salesorderheader.order_month
             , salesorderheader.order_day 
@@ -63,10 +63,18 @@ with
             , metricas.valor_bruto_ordenado        
 
         from salesorderheader
-        left join metricas on salesorderheader.FK_PEDIDO = metricas.FK_PEDIDO
+        left join metricas on salesorderheader.fk_pedido = metricas.fk_pedido
         left join creditcard on salesorderheader.pk_cartao_credito = creditcard.pk_cartao_credito
-        order by salesorderheader.FK_PEDIDO
+        order by salesorderheader.fk_pedido
 
     )
+    
     select *
     from final_select
+
+    /*select
+        sum(sub_total)
+        , sum(valor_bruto_ordenado)
+    from final_select
+    where order_date between '2011-01-01' and '2011-12-31'*/
+    -- Teste para valor vendas em 2011

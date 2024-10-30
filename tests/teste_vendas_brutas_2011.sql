@@ -6,13 +6,15 @@
 with
     vendas_brutas_2011 as (
         select 
-            sum(gross_subtotal_by_order) as total_bruto
+            sum(valor_bruto_ordenado) as total_bruto_ordenado
+            --, round(sum(valor_bruto_ordenado),2) as total_bruto_ordenado --valor arredondado com 2 casas decimais          
         
-        from {{ ref('fct_orders') }}
-        where order_year = 2011
+        from {{ ref('int_vendas_metricas') }}
+        where order_date between '2011-01-01' and '2011-12-31'
 
     )
 
-select total_bruto
+select total_bruto_ordenado
 from vendas_brutas_2011
-where total_bruto not between 12646112.10 and 12646112.20
+where total_bruto_ordenado not between 12646112.1600 and 12646112.1610
+--where total_bruto_ordenado != 12646112,16 --valor de teste com arredondamento de 2 casas decimais

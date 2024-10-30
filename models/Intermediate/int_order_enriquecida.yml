@@ -1,0 +1,48 @@
+version: 2
+
+models:
+
+  - name: int_order_enriquecida
+    description: >
+      Modelo que enriquece os detalhes do pedido com informações do produto, calculando o valor líquido de cada item no pedido. A tabela resultante inclui informações sobre o produto, quantidade e preços aplicáveis.
+
+    columns:
+      - name: PK_PEDIDO_ITEM
+        description: Identificador único do item do pedido.
+        tests:
+          - not_null
+
+      - name: FK_PEDIDO
+        description: Identificador do pedido ao qual o item pertence.
+        tests:
+          - not_null
+          
+      - name: FK_PRODUTO
+        description: Identificador do produto associado ao item do pedido.
+        tests:
+          - not_null
+
+      - name: nome_produto
+        description: Nome do produto associado ao item do pedido. Se não registrado, retorna 'Nao registrado'.
+        tests:
+          - not_null
+
+      - name: QTD_PEDIDO
+        description: Quantidade do produto pedida.
+        tests:
+          - not_null
+
+      - name: PRECO_DA_UNIDADE
+        description: Preço unitário do produto.
+        tests:
+          - not_null
+
+      - name: DESCONTO_UNIDADE
+        description: Valor do desconto aplicado por unidade do produto.
+        tests:
+          - not_null
+
+      - name: VALOR_LIQUIDO
+        description: Valor total do item do pedido após aplicar a quantidade, preço unitário e desconto, formatado como um número com 2 casas decimais.
+        tests:
+          - not_null
