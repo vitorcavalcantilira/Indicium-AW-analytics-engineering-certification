@@ -1,0 +1,91 @@
+version: 2
+
+models:
+
+  - name: fct_vendas
+    description: >
+      Tabela de fatos que consolida informações detalhadas sobre pedidos de venda, incluindo métricas de produtos,
+      informações de pagamento com cartão de crédito e detalhes financeiros como subtotal, taxas e frete.
+      Permite uma visão abrangente do ciclo de vendas e do desempenho por pedido.
+
+    columns:
+      - name: fk_pedido
+        description: Identificador do pedido.
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_endereco
+        description: Chave estrangeira para o endereço associado ao pedido.
+        tests:
+          - not_null
+
+      - name: pk_cliente
+        description: Identificador do cliente que realizou o pedido.
+        tests:
+          - not_null
+
+      - name: tipo_cartao
+        description: Tipo de cartão de crédito utilizado para o pagamento. Exibe 'Nao registrado' se o valor for nulo.
+        tests:
+          - not_null
+
+      - name: status
+        description: Status do pedido (por exemplo, 'Shipped'). Exibe 'Nao registrado' se o valor for nulo.
+        tests:
+          - not_null
+
+      - name: order_date
+        description: Data abreviada em que o pedido foi realizado.
+        tests:
+          - not_null
+
+      - name: order_year
+        description: Ano em que o pedido foi realizado.
+        tests:
+          - not_null
+
+      - name: order_month
+        description: Mês em que o pedido foi realizado.
+        tests:
+          - not_null
+
+      - name: order_day
+        description: Dia em que o pedido foi realizado.
+        tests:
+          - not_null
+
+      - name: sub_total
+        description: Valor subtotal do pedido antes de taxas e frete.
+        tests:
+          - not_null
+
+      - name: valor_taxas
+        description: Valor das taxas aplicadas ao pedido.
+        tests:
+          - not_null
+
+      - name: valor_frete
+        description: Valor do frete cobrado no pedido.
+        tests:
+          - not_null
+
+      - name: total_devido
+        description: Valor total devido pelo cliente, incluindo taxas e frete.
+        tests:
+          - not_null
+
+      - name: qtd_produtos
+        description: Número total de produtos no pedido.
+        tests:
+          - not_null
+
+      - name: qtd_pedidos_total
+        description: Quantidade total de unidades de todos os produtos no pedido.
+        tests:
+          - not_null
+
+      - name: valor_bruto_ordenado
+        description: Valor bruto total do pedido, calculado como a soma dos produtos multiplicados por suas quantidades e preços unitários.
+        tests:
+          - not_null

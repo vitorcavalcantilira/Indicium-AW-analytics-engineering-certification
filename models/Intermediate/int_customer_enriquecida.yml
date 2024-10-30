@@ -1,0 +1,19 @@
+version: 2
+
+models:
+
+  - name: int_customer_enriquecida
+    description: >
+      Tabela que consolida informações de clientes ao enriquecer dados pessoais com informações do cadastro de clientes do sistema ERP.
+
+    columns:
+      - name: pk_entity
+        description: Identificador único da entidade/pessoa.
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_cliente
+        description: Nome completo do cliente ou 'Não registrado' caso o nome não esteja disponível.
+        tests:
+          - not_null

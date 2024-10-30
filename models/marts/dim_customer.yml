@@ -1,0 +1,21 @@
+version: 2
+
+models:
+
+  - name: dim_customer
+    description: >
+      Tabela dimensional que consolida informações de clientes, associando dados pessoais
+      e comerciais. Inclui nome completo dos clientes e identificadores únicos extraídos de 
+      múltiplas fontes do ERP.
+
+    columns:
+      - name: pk_entity
+        description: Identificador único para cada cliente.
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_cliente
+        description: Nome completo do cliente. Caso não esteja disponível, é exibido 'Nao registrado'.
+        tests:
+          - not_null

@@ -1,0 +1,51 @@
+version: 2
+
+models:
+
+  - name: dim_orders
+    description: >
+      Tabela de fatos que consolida informações detalhadas sobre pedidos e produtos. 
+      Contém dados como quantidade, preço unitário, desconto aplicado e valor líquido por item,
+      proporcionando uma visão abrangente do desempenho comercial.
+
+    columns:
+      - name: pk_pedido_item
+        description: Identificador único para cada item de pedido.
+        tests:
+          - not_null
+          - unique
+
+      - name: fk_pedido
+        description: Chave estrangeira que referencia o pedido ao qual o item pertence.
+        tests:
+          - not_null
+
+      - name: fk_produto
+        description: Chave estrangeira que referencia o produto associado ao item do pedido.
+        tests:
+          - not_null
+
+      - name: nome_produto
+        description: Nome do produto. Caso o nome não esteja disponível, é exibido 'Nao registrado'.
+        tests:
+          - not_null
+
+      - name: qtd_pedido
+        description: Quantidade de unidades do produto no pedido.
+        tests:
+          - not_null
+
+      - name: preco_da_unidade
+        description: Preço por unidade do produto.
+        tests:
+          - not_null
+
+      - name: desconto_unidade
+        description: Desconto aplicado por unidade, representado como um percentual.
+        tests:
+          - not_null
+
+      - name: valor_liquido
+        description: Valor líquido do item, calculado como (quantidade * preço * (1 - desconto)).
+        tests:
+          - not_null

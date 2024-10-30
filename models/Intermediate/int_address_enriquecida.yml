@@ -1,0 +1,34 @@
+version: 2
+
+models:
+
+  - name: int_address_enriquecida
+    description: >
+      Tabela que integra informações de pedidos com dados de endereço, província, país e território de vendas, proporcionando
+      uma visão consolidada sobre a localização e área geográfica dos pedidos.
+
+    columns:
+      - name: fk_endereco
+        description: Identificador único do endereço associado ao pedido.
+        tests:
+          - not_null
+
+      - name: endereco_cidade
+        description: Nome da cidade correspondente ao endereço do pedido.
+        tests:
+          - not_null
+
+      - name: nome_provincia
+        description: Nome da província ou estado relacionado ao endereço do pedido.
+        tests:
+          - not_null
+
+      - name: nome_pais
+        description: Nome do país associado ao endereço.
+        tests:
+          - not_null
+
+      - name: nome_territorio
+        description: Nome do território de vendas vinculado ao pedido.
+        tests:
+          - not_null

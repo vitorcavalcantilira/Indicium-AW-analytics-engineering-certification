@@ -1,0 +1,35 @@
+version: 2
+
+models:
+
+  - name: dim_address_enriquecida
+    description: >
+      Tabela dimensional que contém informações enriquecidas sobre endereços, 
+      incluindo cidade, estado, país e território. Esta dimensão é construída 
+      a partir de diversas tabelas do ERP e permite análises detalhadas por localização.
+      
+    columns:
+      - name: fk_endereco
+        description: Chave que identifica cada linha de endereço na dimensão.
+        tests:
+          - not_null
+          
+      - name: endereco_cidade
+        description: Nome da cidade associada ao endereço.
+        tests:
+          - not_null
+
+      - name: nome_provincia
+        description: Nome da província ou estado correspondente.
+        tests:
+          - not_null
+
+      - name: nome_pais
+        description: Nome do país associado ao endereço.
+        tests:
+          - not_null
+
+      - name: nome_territorio
+        description: Nome do território de vendas associado ao endereço.
+        tests:
+          - not_null
