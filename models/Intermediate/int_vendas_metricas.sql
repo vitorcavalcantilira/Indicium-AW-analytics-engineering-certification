@@ -18,7 +18,7 @@ with
         select
             salesorderheader.fk_pedido
 
-            , row_number () over (partition by salesorderheader.fk_pedido order by salesorderdetail.fk_pedido) as row_sales_orderdetails
+            , row_number () over (partition by salesorderheader.fk_pedido order by salesorderdetail.pk_pedido_item) as row_sales_orderdetails
             
             , salesorderdetail.preco_da_unidade*salesorderdetail.qtd_pedido as valor_bruto
             , salesorderdetail.qtd_pedido
