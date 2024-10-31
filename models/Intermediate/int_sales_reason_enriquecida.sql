@@ -19,7 +19,7 @@ with
 
     , order_reason as (
         select
-            salesorderheadersalesreason.FK_PEDIDO
+            salesorderheadersalesreason.fk_pedido
             , salesorderheadersalesreason.pk_motivo_venda
             , salesreason.nome_motivo
             , salesreason.tipo_motivo

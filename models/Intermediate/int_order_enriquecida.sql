@@ -13,18 +13,19 @@ with
 
     , order_enriquecida as (
         select
-            salesorderdetail.PK_PEDIDO_ITEM
-            ,salesorderdetail.FK_PEDIDO
-            ,salesorderdetail.FK_PRODUTO
+            salesorderdetail.pk_pedido_item
+            ,salesorderdetail.fk_pedido
+            ,salesorderdetail.fk_produto
             ,IFNULL(product.nome_produto, 'Nao registrado') as nome_produto
-            ,salesorderdetail.QTD_PEDIDO
-            ,salesorderdetail.PRECO_DA_UNIDADE
-            ,salesorderdetail.DESCONTO_UNIDADE
+            ,salesorderdetail.qtd_pedido
+            ,salesorderdetail.preco_da_unidade
+            ,salesorderdetail.desconto_unidade
             ,cast(salesorderdetail.qtd_pedido*salesorderdetail.preco_da_unidade*(1-salesorderdetail.desconto_unidade) 
-                as numeric(18,2)) as VALOR_LIQUIDO
+                as numeric(18,2)) as valor_liquido
         
         from salesorderdetail
         left join product on salesorderdetail.fk_produto = product.pk_produto
+        order by pk_pedido_item
     )      
 
 select *
