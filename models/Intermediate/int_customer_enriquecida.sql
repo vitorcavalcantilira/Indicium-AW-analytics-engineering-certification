@@ -13,11 +13,11 @@ with
 
     , cliente_enriquecida as (
         select
-            person.pk_cliente
+            customer.pk_cliente
             , IFNULL(person.pessoal_nome_completo, 'Nao registrado') as nome_cliente
         
-        from person
-        left join customer on person.pk_cliente = customer.pk_cliente
+        from customer
+        left join person on customer.pk_cliente = person.pk_cliente
     )      
 
 select *
