@@ -31,9 +31,9 @@ with
         select
             fk_pedido
 
-            , count(row_sales_orderdetails) as qtd_produtos
+            , count(row_sales_orderdetails) as qtd_de_ordens
             , sum(valor_bruto) as valor_bruto_ordenado
-            , sum(qtd_pedido) as qtd_pedidos_total
+            , sum(qtd_pedido) as qtd_produtos
 
         from detalhamento_vendas
         group by fk_pedido
@@ -58,8 +58,8 @@ with
             , salesorderheader.valor_frete
             , salesorderheader.total_devido
 
+            , metricas.qtd_de_ordens
             , metricas.qtd_produtos
-            , metricas.qtd_pedidos_total
             , metricas.valor_bruto_ordenado        
 
         from salesorderheader
