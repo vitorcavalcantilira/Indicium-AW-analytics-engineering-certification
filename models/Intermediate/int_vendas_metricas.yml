@@ -78,7 +78,7 @@ models:
         tests:
           - not_null
 
-      - name: qtd_pedidos_total
+      - name: qtd_de_ordens
         description: Total de pedidos associados ao mesmo identificador.
         tests:
           - not_null

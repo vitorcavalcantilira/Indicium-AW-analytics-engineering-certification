@@ -80,7 +80,7 @@ models:
         tests:
           - not_null
 
-      - name: qtd_pedidos_total
+      - name: qtd_de_ordens
         description: Quantidade total de unidades de todos os produtos no pedido.
         tests:
           - not_null
