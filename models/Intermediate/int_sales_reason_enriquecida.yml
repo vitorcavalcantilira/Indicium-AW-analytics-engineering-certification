@@ -7,15 +7,11 @@ models:
       Modelo que enriquece as informações do pedido com motivos de venda, incluindo detalhes sobre o motivo associado a cada pedido. A tabela resultante fornece uma visão mais clara sobre as razões por trás das vendas.
 
     columns:
+
       - name: fk_pedido
         description: Identificador do pedido.
         tests:
-          - not_null        
-
-      - name: pk_motivo_venda
-        description: Identificador único do motivo da venda associado ao pedido. Se não registrado, retorna 0.
-        tests:
-          - not_null      
+          - not_null          
 
       - name: nome_motivo
         description: Nome do motivo da venda associado ao pedido. Se não registrado, retorna 'Nao registrado'.

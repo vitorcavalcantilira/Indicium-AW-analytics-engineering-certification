@@ -27,7 +27,7 @@ models:
         tests:
           - not_null
 
-      - name: QTD_PEDIDO
+      - name: qtd_produtos
         description: Quantidade do produto pedida.
         tests:
           - not_null

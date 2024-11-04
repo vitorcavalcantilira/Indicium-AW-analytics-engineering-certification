@@ -71,10 +71,3 @@ with
     
     select *
     from final_select
-
-    /*select
-        sum(sub_total)
-        , sum(valor_bruto_ordenado)
-    from final_select
-    where full_date between '2011-01-01' and '2011-12-31'*/
-    -- Teste para valor vendas em 2011

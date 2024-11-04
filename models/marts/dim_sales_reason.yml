@@ -14,11 +14,6 @@ models:
         tests:
           - not_null
 
-      - name: pk_motivo_venda
-        description: Identificador único para cada motivo de venda.
-        tests:
-          - not_null
-
       - name: nome_motivo
         description: Nome do motivo da venda. Caso não esteja disponível, é exibido 'Nao registrado'.
         tests:
