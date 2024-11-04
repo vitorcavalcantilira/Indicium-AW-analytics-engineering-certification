@@ -30,7 +30,7 @@ models:
         tests:
           - not_null
 
-      - name: qtd_pedido
+      - name: qtd_produtos
         description: Quantidade de unidades do produto no pedido.
         tests:
           - not_null
